@@ -1,0 +1,22 @@
+{
+  "name": "recipes-api",
+  "version": "1.0.0",
+  "description": "Node.JS API for the recipes sample application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamsea/recipes-api.git"
+  },
+  "author": "Eric Adams <adams.ea@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adamsea/recipes-api/issues"
+  },
+  "homepage": "https://github.com/adamsea/recipes-api#readme",
+  "dependencies": {
+    "restify": "^4.0.3"
+  }
+}
