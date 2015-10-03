@@ -1,2 +1,2 @@
-# recipe-app-api
+# recipes-api
 Node.JS API for the recipes sample application.
