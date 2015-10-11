@@ -3,69 +3,67 @@
     {
       "id": 1,
       "title": "Derby Pie",
-      "description": "This is totally not paleo!",
+      "description": "This pie served at the Kentucky Derby contains pecans with chocolate chips and a touch of bourbon.",
       "userId": 1
     },
     {
       "id": 2,
       "title": "Kale Chips",
-      "description": "Now that's more like it.",
+      "description": "A healthy snack of crunchy kale seasoned with olive oil and salt.",
       "userId": 1
     }
   ],
-  "recipeingredients": [
-    {
-      "id": 1,
-      "recipeId": 1,
-      "ingredientId": 1
-    },
-    {
-      "id": 2,
-      "recipeId": 1,
-      "ingredientId": 2
-    },
-    {
-      "id": 3,
-      "recipeId": 2,
-      "ingredientId": 3
-    },
-    {
-      "id": 4,
-      "recipeId": 2,
-      "ingredientId": 4
-    },
-    {
-      "id": 5,
-      "recipeId": 1,
-      "ingredientId": 3
-    }
-  ],
+  "recipeingredients": [],
   "ingredients": [
     {
       "id": 1,
-      "title": "Crust",
-      "description": "Gluten and sugar mess"
+      "title": "Pecans"
     },
     {
       "id": 2,
-      "title": "Chocolate",
-      "description": "Because we need Chocolate"
+      "title": "Chocolate Chips"
     },
     {
       "id": 3,
-      "title": "Coconut Oil",
-      "description": "It makes everything magically healthy"
+      "title": "Coconut Oil"
     },
     {
       "id": 4,
-      "title": "Kale",
-      "description": "You want a green salad?!?"
+      "title": "Kale"
+    },
+    {
+      "id": 5,
+      "title": "Olive Oil"
+    },
+    {
+      "id": 6,
+      "title": "Salt"
+    },
+    {
+      "id": 7,
+      "title": "Butter"
     }
   ],
   "users": [
     {
       "id": 1,
-      "username": "nicoleradams"
+      "username": "jlebowski"
+    },
+    {
+      "id": 2,
+      "username": "wsobchak"
+    },
+    {
+      "id": 3,
+      "username": "dkerabatsos"
+    },
+    {
+      "id": 4,
+      "username": "jquintana"
+    },
+    {
+      "id": 5,
+      "username": "smokey"
     }
   ]
 }
