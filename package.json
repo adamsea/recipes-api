@@ -2,9 +2,10 @@
   "name": "recipes-api",
   "version": "1.0.0",
   "description": "Node.JS API for the recipes sample application.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,11 @@
   },
   "homepage": "https://github.com/adamsea/recipes-api#readme",
   "dependencies": {
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
+    "express": "^4.13.3",
     "lodash": "^3.10.1",
-    "restify": "^4.0.3"
+    "node-json-db": "^0.5.1"
   }
 }

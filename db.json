@@ -1,0 +1,71 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "title": "Derby Pie",
+      "description": "This is totally not paleo!",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "Kale Chips",
+      "description": "Now that's more like it.",
+      "userId": 1
+    }
+  ],
+  "recipeingredients": [
+    {
+      "id": 1,
+      "recipeId": 1,
+      "ingredientId": 1
+    },
+    {
+      "id": 2,
+      "recipeId": 1,
+      "ingredientId": 2
+    },
+    {
+      "id": 3,
+      "recipeId": 2,
+      "ingredientId": 3
+    },
+    {
+      "id": 4,
+      "recipeId": 2,
+      "ingredientId": 4
+    },
+    {
+      "id": 5,
+      "recipeId": 1,
+      "ingredientId": 3
+    }
+  ],
+  "ingredients": [
+    {
+      "id": 1,
+      "title": "Crust",
+      "description": "Gluten and sugar mess"
+    },
+    {
+      "id": 2,
+      "title": "Chocolate",
+      "description": "Because we need Chocolate"
+    },
+    {
+      "id": 3,
+      "title": "Coconut Oil",
+      "description": "It makes everything magically healthy"
+    },
+    {
+      "id": 4,
+      "title": "Kale",
+      "description": "You want a green salad?!?"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "nicoleradams"
+    }
+  ]
+}
