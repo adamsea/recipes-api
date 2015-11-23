@@ -9,15 +9,22 @@ router.get('/', function (req, res, next) {
   var recipes = db.getData('/recipes');
 
   // Expand requested resources if they exist
-  // Users and ingredients for the recipes are loaded
-  if (!_.isUndefined(req.query._expand)) {
-    var users = db.getData('/users');
-    _(recipes)
-      .forEach(function (recipe) {
-        recipe.user = _(users).findWhere({ id: recipe.userId });
-        delete recipe.userId;
-      })
-      .value();
+  // The resource to expand is singular, e.g.
+  // to expand 'users' we provide _expand=user
+  var expand = req.query._expand;
+  if (expand) {
+    try {
+      var relation = db.getData('/' + expand + 's');
+      _(recipes)
+        .forEach(function (recipe) {
+          recipe.user = _(relation).findWhere({ id: recipe[expand + 'Id'] });
+          delete recipe[expand + 'Id'];
+        })
+        .value();
+    }
+    catch(err) {
+      console.log(err);
+    }
   }
 
   res.json(recipes);
