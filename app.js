@@ -1,6 +1,12 @@
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cors = require('cors');
+
+// CORS setup
+var corsOptions = {
+  origin: 'http://127.0.0.1:9000'
+};
 
 // Modules for API resource routes
 var routes = require('./routes/index');
@@ -8,6 +14,7 @@ var recipes = require('./routes/recipes/index');
 
 // Create express app instance and set middleware
 var app = express();
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
