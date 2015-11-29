@@ -47,23 +47,28 @@
   "users": [
     {
       "id": 1,
-      "username": "jlebowski"
+      "email": "ryan.miles58@example.com",
+      "username": "ryanmiles58"
     },
     {
       "id": 2,
-      "username": "wsobchak"
+      "email": "edgar.silva35@example.com",
+      "username": "edgarsilva35"
     },
     {
       "id": 3,
-      "username": "dkerabatsos"
+      "email": "misty.larson78@example.com",
+      "username": "mistylarson78"
     },
     {
       "id": 4,
-      "username": "jquintana"
+      "email": "ricky.stewart38@example.com",
+      "username": "rickystewart38"
     },
     {
       "id": 5,
-      "username": "smokey"
+      "email": "gertrude.burton42@example.com",
+      "username": "gertrudeburton42"
     }
   ]
 }
