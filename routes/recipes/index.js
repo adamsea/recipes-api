@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
       var relation = db.getData('/' + expand + 's');
       _(recipes)
         .forEach(function (recipe) {
-          recipe.user = _(relation).findWhere({ id: recipe[expand + 'Id'] });
+          recipe[expand] = _(relation).find({ id: recipe[expand + 'Id'] });
           delete recipe[expand + 'Id'];
         })
         .value();
