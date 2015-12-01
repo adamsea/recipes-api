@@ -14,6 +14,29 @@
     }
   ],
   "recipeingredients": [],
+  "recipetags": [
+    {
+      "1": 6
+    },
+    {
+      "1": 4
+    },
+    {
+      "2": 1
+    },
+    {
+      "2": 2
+    },
+    {
+      "2": 4
+    },
+    {
+      "2": 5
+    },
+    {
+      "2": 6
+    }
+  ],
   "ingredients": [
     {
       "id": 1,
@@ -69,6 +92,32 @@
       "id": 5,
       "email": "gertrude.burton42@example.com",
       "username": "gertrudeburton42"
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "title": "Paleo"
+    },
+    {
+      "id": 2,
+      "title": "Vegan"
+    },
+    {
+      "id": 3,
+      "title": "Vegetarian"
+    },
+    {
+      "id": 4,
+      "title": "Gluten Free"
+    },
+    {
+      "id": 5,
+      "title": "Grain Free"
+    },
+    {
+      "id": 6,
+      "title": "Dairy Free"
     }
   ]
 }

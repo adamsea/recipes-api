@@ -11,6 +11,7 @@ var corsOptions = {
 // Modules for API resource routes
 var routes = require('./routes/index');
 var recipes = require('./routes/recipes/index');
+var tags = require('./routes/tags/index');
 
 // Create express app instance and set middleware
 var app = express();
@@ -22,6 +23,7 @@ app.use(cookieParser());
 // Mount the route modules
 app.use('/', routes);
 app.use('/recipes', recipes);
+app.use('/tags', tags);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
