@@ -3,6 +3,11 @@ var router = express.Router();
 var JsonDB = require('node-json-db');
 var _ = require('lodash');
 
+// Escape a string for regexp use
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 // Recipes listing
 router.get('/', function (req, res, next) {
   var db = new JsonDB('db', false, false);
