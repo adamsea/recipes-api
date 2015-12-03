@@ -12,21 +12,37 @@ router.get('/', function (req, res, next) {
   // The resource to expand is singular, e.g.
   // to expand 'users' we provide _expand=user
   var expand = req.query._expand;
+  var relation;
   if (expand) {
     try {
-      var relation = db.getData('/' + expand + 's');
-      _(recipes)
-        .forEach(function (recipe) {
-          recipe[expand] = _(relation).find({ id: recipe[expand + 'Id'] });
-          delete recipe[expand + 'Id'];
-        });
+      relation = db.getData('/' + expand + 's');
     }
     catch(err) {
-      console.log(err);
+      console.log(err.message);
     }
   }
 
-  res.json(recipes);
+  // Obtain a possible search query
+  var q = req.query.q;
+  var qReg = q && new RegExp(q, 'i');
+
+  // Filter on the search query and then optionally
+  // expand recipes in the response
+  res.json(_(recipes)
+    .filter(function (recipe) {
+      if (qReg) {
+        return recipe.description.trim().match(qReg);
+      }
+      return true;
+    })
+    .map(function (recipe) {
+      if (relation) {
+        recipe[expand] = _(relation).find({ id: recipe[expand + 'Id'] });
+        delete recipe[expand + 'Id'];
+      }
+      return recipe;
+    })
+    .value());
 });
 
 module.exports = router;
