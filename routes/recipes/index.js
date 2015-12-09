@@ -45,4 +45,46 @@ router.get('/', function (req, res, next) {
     .value());
 });
 
+//
+// Create a new recipe
+//
+router.post('/', function(req, res, next) {
+  var db = new JsonDB('db', false, true);
+  var post = req.body;
+  var title = post.title;
+  var description = post.description;
+  var tags = post.tags;
+  var lastId;
+
+  // Add the recipe to the datastore
+  try {
+    // Let's start by getting our most recent id
+    var recipes = db.getData('/recipes');
+
+    // Let's get some Lodash in here!
+    lastId = recipes[recipes.length - 1].id;
+
+    // Update the datastore
+    db.push('/recipes', [{
+      id: ++lastId,
+      title: title,
+      description: description,
+      userId: 1
+    }], false);
+    db.save();
+
+    // Let's add the tags!
+    console.log(tags);
+  }
+  catch (err) {
+    console.log(err.message);
+  }
+
+  res.json({
+    id: lastId,
+    title: title,
+    description: description
+  });
+});
+
 module.exports = router;
