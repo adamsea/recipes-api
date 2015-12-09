@@ -64,17 +64,22 @@ router.post('/', function(req, res, next) {
     // Let's get some Lodash in here!
     lastId = recipes[recipes.length - 1].id;
 
+    // First get a unique set of tags
+    tags = _(tags)
+      .uniqBy(function (tag) {
+        return tag.toLowerCase();
+      })
+      .value();
+
     // Update the datastore
     db.push('/recipes', [{
       id: ++lastId,
       title: title,
       description: description,
-      userId: 1
+      userId: 1,
+      tags: tags
     }], false);
     db.save();
-
-    // Let's add the tags!
-    console.log(tags);
   }
   catch (err) {
     console.log(err.message);
@@ -83,7 +88,8 @@ router.post('/', function(req, res, next) {
   res.json({
     id: lastId,
     title: title,
-    description: description
+    description: description,
+    tags: tags
   });
 });
 
