@@ -62,23 +62,49 @@ router.post('/', function(req, res, next) {
     var recipes = db.getData('/recipes');
 
     // Let's get some Lodash in here!
-    lastId = recipes[recipes.length - 1].id;
+    lastId = _(recipes).last().id;
 
     // First get a unique set of tags
-    tags = _(tags)
-      .uniqBy(function (tag) {
-        return tag.toLowerCase();
-      })
-      .value();
+    tags = _.uniqBy(tags, function (tag) {
+      return tag.toLowerCase();
+    });
 
     // Update the datastore
     db.push('/recipes', [{
       id: ++lastId,
       title: title,
       description: description,
-      userId: 1,
-      tags: tags
+      userId: 1
     }], false);
+    db.save();
+
+    // Get the db tags and last index
+    var dbTags = db.getData('/tags');
+    var lastTagId = _(dbTags).last().id;
+
+    // Get new tags to save
+    var saveTags = _.remove(tags, function(tag) {
+      return !_(dbTags).find({title: tag});
+    });
+
+    // Only save the unique tags
+    db.push('/tags', _.map(saveTags, function(tag) {
+      return {
+        id: ++lastTagId,
+        title: tag
+      };
+    }), false);
+    db.save();
+
+    // Save the tag relationships
+    dbTags = db.getData('/tags');
+    tags = _(tags).concat(saveTags).value();
+    var recipeTags = _.map(tags, function(tag) {
+      var rel = {};
+      rel[lastId] = _.find(dbTags, {title: tag}).id;
+      return rel;
+    });
+    db.push('/recipetags', recipeTags, false);
     db.save();
   }
   catch (err) {
