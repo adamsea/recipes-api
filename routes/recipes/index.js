@@ -3,6 +3,24 @@ var router = express.Router();
 var JsonDB = require('node-json-db');
 var _ = require('lodash');
 
+// Get the tags for a recipe
+function getTags(recipe, tags, recipeTags) {
+  // Get the tag ids that are in our recipe
+  var relTags = _(recipeTags)
+    .remove(function(tag) {
+      return _(tag).keys().first() == recipe.id;
+    })
+    .map(function(tag) {
+      return _(tag).values().first();
+    })
+    .value();
+
+  // Get the list of tag objects
+  return _.filter(tags, function(tag) {
+    return _.indexOf(relTags, tag.id) !== -1;
+  });
+}
+
 // Recipes listing
 router.get('/', function (req, res, next) {
   var db = new JsonDB('db', false, false);
@@ -40,6 +58,7 @@ router.get('/', function (req, res, next) {
         recipe[expand] = _(relation).find({ id: recipe[expand + 'Id'] });
         delete recipe[expand + 'Id'];
       }
+      recipe.tags = getTags(recipe, db.getData('/tags'), db.getData('/recipetags'));
       return recipe;
     })
     .value());
