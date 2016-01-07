@@ -41,15 +41,15 @@ router.get('/', function (req, res, next) {
   }
 
   // Obtain a possible search query
-  var q = req.query.q;
-  var qReg = q && new RegExp(q, 'i');
+  var q = _.trim(req.query.q);
+  var qReg = q && new RegExp(_.escapeRegExp(q), 'i');
 
   // Filter on the search query and then optionally
   // expand recipes in the response
   res.json(_(recipes)
     .filter(function (recipe) {
       if (qReg) {
-        return recipe.description.trim().match(qReg);
+        return _.trim(recipe.description).match(qReg);
       }
       return true;
     })
