@@ -21,6 +21,24 @@ function getTags(recipe, tags, recipeTags) {
   });
 }
 
+// Get the ingredients for a recipe
+function getIngredients(recipe, ingredients, recipeIngredients) {
+  // Get the ingredient ids that are in our recipe
+  var relIngredients = _(recipeIngredients)
+    .remove(function(ingredient) {
+      return _(ingredient).keys().first() == recipe.id;
+    })
+    .map(function(ingredient) {
+      return _(ingredient).values().first();
+    })
+    .value();
+
+  // Get the list of tag objects
+  return _.filter(ingredients, function(ingredient) {
+    return _.indexOf(relIngredients, ingredient.id) !== -1;
+  });
+}
+
 // Recipes listing
 router.get('/', function (req, res, next) {
   var db = new JsonDB('db', false, false);
@@ -62,6 +80,23 @@ router.get('/', function (req, res, next) {
       return recipe;
     })
     .value());
+});
+
+//
+// Get a recipe by id
+//
+router.get('/:id', function (req, res, next) {
+  var db = new JsonDB('db', false, false);
+  var recipes = db.getData('/recipes');
+  var recipe = _.find(recipes, {id: _.parseInt(req.params.id)});
+  if (recipe) {
+    recipe.user = _.find(db.getData('/users'), {id: recipe.userId});
+    delete recipe.userId;
+    recipe.tags = getTags(recipe, db.getData('/tags'), db.getData('/recipetags'));
+    recipe.ingredients = getIngredients(recipe, db.getData('/ingredients'), db.getData('/recipeingredients'));
+    return res.json(recipe);
+  }
+  next();
 });
 
 //

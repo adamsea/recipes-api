@@ -4,16 +4,43 @@
       "id": 1,
       "title": "Derby Pie",
       "description": "This pie served at the Kentucky Derby contains pecans with chocolate chips and a touch of bourbon.",
+      "image": "http://127.0.0.1:9000/assets/images/derbypie.jpg",
       "userId": 1
     },
     {
       "id": 2,
       "title": "Kale Chips",
       "description": "A healthy snack of crunchy kale seasoned with olive oil and salt.",
+      "image": "http://127.0.0.1:9000/assets/images/kale.jpg",
       "userId": 2
     }
   ],
-  "recipeingredients": [],
+  "recipeingredients": [
+    {
+      "1": 1
+    },
+    {
+      "1": 2
+    },
+    {
+      "1": 3
+    },
+    {
+      "1": 7
+    },
+    {
+      "2": 4
+    },
+    {
+      "2": 5
+    },
+    {
+      "2": 6
+    },
+    {
+      "2": 7
+    }
+  ],
   "recipetags": [
     {
       "1": 6
