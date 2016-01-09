@@ -73,6 +73,7 @@ router.post('/', function(req, res, next) {
   var title = post.title;
   var description = post.description;
   var tags = post.tags;
+  var image = post.image;
   var lastId;
 
   // Add the recipe to the datastore
@@ -93,6 +94,7 @@ router.post('/', function(req, res, next) {
       id: ++lastId,
       title: title,
       description: description,
+      image: image,
       userId: 1
     }], false);
     db.save();
@@ -134,6 +136,7 @@ router.post('/', function(req, res, next) {
     id: lastId,
     title: title,
     description: description,
+    image: image,
     tags: tags
   });
 });
