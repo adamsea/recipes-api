@@ -97,54 +97,79 @@
   "users": [
     {
       "id": 1,
-      "email": "ryan.miles58@example.com",
-      "username": "ryanmiles58"
+      "gender": "Male",
+      "first_name": "Bruce",
+      "last_name": "Owens",
+      "username": "bowens0",
+      "password": "LpNZskvZr",
+      "email": "bowens0@japanpost.jp",
+      "image": "http://api.adorable.io/avatars/200/bowens0@japanpost.jp.png"
     },
     {
       "id": 2,
-      "email": "edgar.silva35@example.com",
-      "username": "edgarsilva35"
+      "gender": "Male",
+      "first_name": "Randy",
+      "last_name": "Simpson",
+      "username": "rsimpson1",
+      "password": "Xz2oeCls5Asy",
+      "email": "rsimpson1@cpanel.net",
+      "image": "http://api.adorable.io/avatars/200/rsimpson1@cpanel.net.png"
     },
     {
       "id": 3,
-      "email": "misty.larson78@example.com",
-      "username": "mistylarson78"
+      "gender": "Female",
+      "first_name": "Tammy",
+      "last_name": "Austin",
+      "username": "taustin2",
+      "password": "gtj0qCzWq",
+      "email": "taustin2@blogspot.com",
+      "image": "http://api.adorable.io/avatars/200/taustin2@blogspot.com.png"
     },
     {
       "id": 4,
-      "email": "ricky.stewart38@example.com",
-      "username": "rickystewart38"
+      "gender": "Female",
+      "first_name": "Heather",
+      "last_name": "Chavez",
+      "username": "hchavez3",
+      "password": "HahYaWEC",
+      "email": "hchavez3@drupal.org",
+      "image": "http://api.adorable.io/avatars/200/hchavez3@drupal.org.png"
     },
     {
       "id": 5,
-      "email": "gertrude.burton42@example.com",
-      "username": "gertrudeburton42"
+      "gender": "Male",
+      "first_name": "Thomas",
+      "last_name": "Gilbert",
+      "username": "tgilbert4",
+      "password": "ED6YGACClqtp",
+      "email": "tgilbert4@studiopress.com",
+      "image": "http://api.adorable.io/avatars/200/tgilbert4@studiopress.com.png"
     }
   ],
   "tags": [
     {
       "id": 1,
-      "title": "Paleo"
+      "title": "paleo"
     },
     {
       "id": 2,
-      "title": "Vegan"
+      "title": "vegan"
     },
     {
       "id": 3,
-      "title": "Vegetarian"
+      "title": "vegetarian"
     },
     {
       "id": 4,
-      "title": "Gluten Free"
+      "title": "gluten free"
     },
     {
       "id": 5,
-      "title": "Grain Free"
+      "title": "grain free"
     },
     {
       "id": 6,
-      "title": "Dairy Free"
+      "title": "dairy free"
     }
   ]
 }
