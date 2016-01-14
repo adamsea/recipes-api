@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var JsonDB = require('node-json-db');
 var _ = require('lodash');
+var auth = require('../../utils/auth');
 
 // Get the tags for a recipe
 function getTags(recipe, tags, recipeTags) {
@@ -102,7 +103,7 @@ router.get('/:id', function (req, res, next) {
 //
 // Create a new recipe
 //
-router.post('/', function(req, res, next) {
+router.post('/', auth.token, function(req, res, next) {
   var db = new JsonDB('db', false, true);
   var post = req.body;
   var title = post.title;

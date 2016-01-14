@@ -9,6 +9,7 @@ var corsOptions = {
 };
 
 // Modules for API resource routes
+var login = require('./routes/login/index');
 var routes = require('./routes/index');
 var recipes = require('./routes/recipes/index');
 var tags = require('./routes/tags/index');
@@ -22,6 +23,7 @@ app.use(cookieParser());
 
 // Mount the route modules
 app.use('/', routes);
+app.use('/login', login);
 app.use('/recipes', recipes);
 app.use('/tags', tags);
 

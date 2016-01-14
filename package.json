@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/adamsea/recipes-api#readme",
   "dependencies": {
+    "basic-auth": "^1.0.3",
     "body-parser": "^1.14.1",
     "cookie-parser": "^1.4.0",
     "cors": "^2.7.1",
