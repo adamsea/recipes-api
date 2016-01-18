@@ -17,28 +17,60 @@
   ],
   "recipeingredients": [
     {
-      "1": 1
+      "1": {
+        "ingredient_id": 1,
+        "amount": 2,
+        "unit": "cups"
+      }
     },
     {
-      "1": 2
+      "1": {
+        "ingredient_id": 2,
+        "amount": 1,
+        "unit": "cups"
+      }
     },
     {
-      "1": 3
+      "1": {
+        "ingredient_id": 3,
+        "amount": 2,
+        "unit": "tablespoons"
+      }
     },
     {
-      "1": 7
+      "1": {
+        "ingredient_id": 7,
+        "amount": 1,
+        "unit": "tablespoons"
+      }
     },
     {
-      "2": 4
+      "2": {
+        "ingredient_id": 4,
+        "amount": 1,
+        "unit": "quarts"
+      }
     },
     {
-      "2": 5
+      "2": {
+        "ingredient_id": 5,
+        "amount": 4,
+        "unit": "tablespoons"
+      }
     },
     {
-      "2": 6
+      "2": {
+        "ingredient_id": 6,
+        "amount": 1,
+        "unit": "teaspoons"
+      }
     },
     {
-      "2": 7
+      "2": {
+        "ingredient_id": 7,
+        "amount": 1,
+        "unit": "tablespoons"
+      }
     }
   ],
   "recipetags": [
@@ -67,31 +99,31 @@
   "ingredients": [
     {
       "id": 1,
-      "title": "Pecans"
+      "title": "pecans"
     },
     {
       "id": 2,
-      "title": "Chocolate Chips"
+      "title": "chocolate chips"
     },
     {
       "id": 3,
-      "title": "Coconut Oil"
+      "title": "coconut oil"
     },
     {
       "id": 4,
-      "title": "Kale"
+      "title": "kale"
     },
     {
       "id": 5,
-      "title": "Olive Oil"
+      "title": "olive oil"
     },
     {
       "id": 6,
-      "title": "Salt"
+      "title": "salt"
     },
     {
       "id": 7,
-      "title": "Butter"
+      "title": "butter"
     }
   ],
   "users": [
