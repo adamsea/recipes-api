@@ -34,9 +34,12 @@ function getIngredients(recipe, ingredients, recipeIngredients) {
     })
     .value();
 
-  // Get the list of tag objects
+  // Get the list of ingredient objects with amounts
   return _.filter(ingredients, function(ingredient) {
-    return _.indexOf(relIngredients, ingredient.id) !== -1;
+    var rel = _.find(relIngredients, {ingredient_id: ingredient.id});
+    if (!_.isUndefined(rel)) {
+      return _.assign(ingredient, _.omit(rel, 'ingredient_id'));
+    }
   });
 }
 
@@ -110,6 +113,7 @@ router.post('/', auth.token, function(req, res, next) {
   var description = post.description;
   var tags = post.tags;
   var image = post.image;
+  var ingredients = post.ingredients;
   var lastId;
 
   // Add the recipe to the datastore
@@ -120,11 +124,6 @@ router.post('/', auth.token, function(req, res, next) {
     // Let's get some Lodash in here!
     lastId = _(recipes).last().id;
 
-    // First get a unique set of tags
-    tags = _.uniqBy(tags, function (tag) {
-      return tag.toLowerCase();
-    });
-
     // Update the datastore
     db.push('/recipes', [{
       id: ++lastId,
@@ -134,6 +133,11 @@ router.post('/', auth.token, function(req, res, next) {
       userId: 1
     }], false);
     db.save();
+
+    // First get a unique set of tags
+    tags = _.uniqBy(tags, function (tag) {
+      return tag.toLowerCase();
+    });
 
     // Get the db tags and last index
     var dbTags = db.getData('/tags');
@@ -162,6 +166,45 @@ router.post('/', auth.token, function(req, res, next) {
       return rel;
     });
     db.push('/recipetags', recipeTags, false);
+    db.save();
+
+    // Get a unique set of ingredients
+    ingredients = _.uniq(ingredients, function(ingredient) {
+      return ingredient.title.toLowerCase();
+    });
+
+    // Get the db ingredients and last index
+    var dbIngredients = db.getData('/ingredients');
+    var lastIngredientId = _.last(dbIngredients).id;
+
+    // Get the new ingredients to save
+    var saveIngredients = _.remove(ingredients, function(ingredient) {
+      return !_.find(dbIngredients, {title: ingredient.title});
+    });
+
+    // Only save the unique ingredients
+    db.push('/ingredients', _.map(saveIngredients, function(ingredient) {
+      return {
+        id: ++lastIngredientId,
+        title: ingredient.title
+      };
+    }), false);
+    db.save();
+
+    // Save the ingredient relationships
+    dbIngredients = db.getData('/ingredients');
+    ingredients = _(ingredients).concat(saveIngredients).value();
+    var recipeIngredients = _.map(ingredients, function(ingredient) {
+      var rel = {};
+      var id = _.find(dbIngredients, {title: ingredient.title}).id;
+      rel[lastId] = {
+        ingredient_id: id,
+        amount: ingredient.amount,
+        unit: ingredient.unit
+      };
+      return rel;
+    });
+    db.push('/recipeingredients', recipeIngredients, false);
     db.save();
   }
   catch (err) {
