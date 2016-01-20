@@ -130,7 +130,8 @@ router.post('/', auth.token, function(req, res, next) {
       title: title,
       description: description,
       image: image,
-      userId: 1
+      userId: req.user.id,
+      created: _.now()
     }], false);
     db.save();
 
