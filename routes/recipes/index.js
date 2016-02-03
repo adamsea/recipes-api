@@ -19,8 +19,7 @@ router.get('/', function (req, res, next) {
         .forEach(function (recipe) {
           recipe[expand] = _(relation).find({ id: recipe[expand + 'Id'] });
           delete recipe[expand + 'Id'];
-        })
-        .value();
+        });
     }
     catch(err) {
       console.log(err);
