@@ -170,7 +170,7 @@ router.post('/', auth.token, function(req, res, next) {
     db.save();
 
     // Get a unique set of ingredients
-    ingredients = _.uniq(ingredients, function(ingredient) {
+    ingredients = _.uniqBy(ingredients, function(ingredient) {
       return ingredient.title.toLowerCase();
     });
 
