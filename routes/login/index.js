@@ -7,7 +7,7 @@ var crypto = require('crypto');
 
 // Login a user with basic auth
 router.post('/', auth.basic, function (req, res, next) {
-  var db = new JsonDB('db', false, true);
+  var db = new JsonDB('db', true, true);
   var users = db.getData('/users');
 
   function sendError() {
